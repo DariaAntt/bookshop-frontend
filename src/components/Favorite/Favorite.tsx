@@ -11,13 +11,13 @@ import { BookCard } from "../Catalog/Catalog";
 import axios from "axios";
 
 export function Favorite() {
-  const baseUrl = "https://localhost:5001/";
+  const BASE_URL = "https://bookshop-backend-latest.onrender.com";
 
   const [favorites, setFavorites] = useState<BookCard[]>([]);
 
   useEffect(() => {
     // Загрузка избранных книг при монтировании компонента
-    fetch(baseUrl + "favorites/books") // URL вашего API
+    fetch(BASE_URL + "favorites/books") // URL вашего API
       .then((response) => response.json())
       .then((data) => setFavorites(data))
       .catch((error) =>
@@ -27,7 +27,7 @@ export function Favorite() {
 
   const toggleFavorite = async (bookId: number) => {
     try {
-      const url = `${baseUrl}Favorites/${bookId}`;
+      const url = `${BASE_URL}Favorites/${bookId}`;
       const response = await axios({
         method: "DELETE",
         url,
@@ -57,7 +57,7 @@ export function Favorite() {
               <div>
                 <BookImage>
                   <img
-                    src={baseUrl + `img/books/${book.bookImage}`}
+                    src={BASE_URL + `img/books/${book.bookImage}`}
                     alt={book.title}
                   />
                 </BookImage>
@@ -72,10 +72,10 @@ export function Favorite() {
                   <p>КУПИТЬ</p>
                 </Button>
                 <ButtonFavorite>
-                  {/* <img src={baseUrl + "img/heart1.png"} alt="В избранное" /> */}
+                  {/* <img src={BASE_URL + "img/heart1.png"} alt="В избранное" /> */}
                   <img
                     id={`favorite-${book.id}`}
-                    src={baseUrl + "img/heart2.png"}
+                    src={BASE_URL + "img/heart2.png"}
                     onClick={() => toggleFavorite(book.id)}
                   />
                 </ButtonFavorite>

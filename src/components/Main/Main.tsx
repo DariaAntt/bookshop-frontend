@@ -17,7 +17,7 @@ export function Main() {
   const sliderRef = useRef<HTMLDivElement>(null);
   const slideCount = 3; // Количество слайдов
 
-  const baseUrl = "https://localhost:5001/";
+  const BASE_URL = "https://bookshop-backend-latest.onrender.com";
   const [books, setBooks] = useState<BookCard[]>([]);
 
   const showNextSlide = () => {
@@ -39,7 +39,7 @@ export function Main() {
 
   useEffect(() => {
     // первая загрузка книг
-    fetch(baseUrl + "Catalog")
+    fetch(BASE_URL + "Catalog")
       .then((response) => response.json())
       .then((data) => {
         setBooks(data.slice(0, 5));
@@ -94,7 +94,7 @@ export function Main() {
             <div style={{ marginBottom: "10px" }}>
               <BookImage>
                 <img
-                  src={baseUrl + "img/books/" + book.bookImage}
+                  src={BASE_URL + "img/books/" + book.bookImage}
                   alt={book.title}
                 />
               </BookImage>

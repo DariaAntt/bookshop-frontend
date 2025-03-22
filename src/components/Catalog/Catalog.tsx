@@ -51,7 +51,7 @@ interface BookFilter {
 }
 
 export function Catalog() {
-  const baseUrl = "https://localhost:5001/";
+  const BASE_URL = "https://bookshop-backend-latest.onrender.com";
   const [books, setBooks] = useState<BookCard[]>([]);
   const [favorites, setFavorites] = useState<Set<number>>(new Set());
   const [loading, setLoading] = useState(false);
@@ -96,7 +96,7 @@ export function Catalog() {
 
   useEffect(() => {
     // первая загрузка книг
-    fetch(baseUrl + "Catalog")
+    fetch(BASE_URL + "Catalog")
       .then((response) => response.json())
       .then((data) => {
         setBooks(data);
@@ -107,7 +107,7 @@ export function Catalog() {
     // инициализация состояния избранного
     const fetchFavorites = async () => {
       try {
-        const response = await axios.get(`${baseUrl}Favorites`);
+        const response = await axios.get(`${BASE_URL}Favorites`);
         const favoriteIds = response.data.map((fav: any) => fav.bookId);
         setFavorites(new Set(favoriteIds));
       } catch (error) {
@@ -119,7 +119,7 @@ export function Catalog() {
 
     // Загрузка авторов
     axios
-      .get<string[]>(baseUrl + "Catalog/authors")
+      .get<string[]>(BASE_URL + "Catalog/authors")
       .then((response) => {
         const authors = response.data.map((author) => ({
           value: author,
@@ -133,7 +133,7 @@ export function Catalog() {
 
     // Загрузка издательств
     axios
-      .get<string[]>(baseUrl + "Catalog/publishings")
+      .get<string[]>(BASE_URL + "Catalog/publishings")
       .then((response) => {
         const publishers = response.data.map((publisher) => ({
           value: publisher,
@@ -163,7 +163,7 @@ export function Catalog() {
       );
 
       const response = await axios.get<BookCard[]>(
-        `${baseUrl}Catalog/paged?${queryString}`
+        `${BASE_URL}Catalog/paged?${queryString}`
       );
 
       if (response.data.length > 0) {
@@ -183,7 +183,7 @@ export function Catalog() {
   const applyFilters = async () => {
     try {
       const response = await axios.post<BookCard[]>(
-        `${baseUrl}Catalog/filtered`,
+        `${BASE_URL}Catalog/filtered`,
         filters
       );
       setBooks(response.data);
@@ -204,7 +204,7 @@ export function Catalog() {
 
   const getBookDetails = async (id: number) => {
     try {
-      const response = await axios.get(`${baseUrl}Catalog/${id}`);
+      const response = await axios.get(`${BASE_URL}Catalog/${id}`);
       setBookDetails((prev) => ({
         ...prev,
         [id]: response.data, // Сохраняем данные в объекте по id книги
@@ -223,7 +223,7 @@ export function Catalog() {
 
   const toggleFavorite = async (bookId: number) => {
     try {
-      const url = `${baseUrl}Favorites/${bookId}`;
+      const url = `${BASE_URL}Favorites/${bookId}`;
       const method = isFavorite(bookId) ? "DELETE" : "POST";
 
       const response = await axios({
@@ -249,7 +249,7 @@ export function Catalog() {
       // Обновление иконки кнопки
       const button = document.querySelector(`#favorite-${bookId}`);
       if (button) {
-        button.setAttribute("src", baseUrl + icon);
+        button.setAttribute("src", BASE_URL + icon);
       }
     } catch (error) {
       console.error("Ошибка при обновлении избранного:", error);
@@ -581,7 +581,7 @@ export function Catalog() {
                 <div>
                   <BookImage>
                     <img
-                      src={baseUrl + "img/books/" + book.bookImage}
+                      src={BASE_URL + "img/books/" + book.bookImage}
                       alt={book.title}
                       onClick={() => handleBookClick(book)}
                     />
@@ -602,13 +602,13 @@ export function Catalog() {
                     <p>КУПИТЬ</p>
                   </Button>
                   <ButtonFavorite>
-                    {/* <img src={baseUrl + "img/heart1.png"} alt="В избранное" /> */}
+                    {/* <img src={BASE_URL + "img/heart1.png"} alt="В избранное" /> */}
                     <img
                       id={`favorite-${book.id}`}
                       src={
                         isFavorite(book.id)
-                          ? baseUrl + "img/heart2.png"
-                          : baseUrl + "img/heart1.png"
+                          ? BASE_URL + "img/heart2.png"
+                          : BASE_URL + "img/heart1.png"
                       }
                       alt="В избранное"
                       onClick={() => toggleFavorite(book.id)}

@@ -16,7 +16,7 @@ interface ModalProps {
 }
 
 export const BookModal: React.FC<ModalProps> = ({ book, onClose, details }) => {
-  const baseUrl = "https://localhost:5001/"; // Базовый URL API
+  const BASE_URL = "https://bookshop-backend-latest.onrender.com"; // Базовый URL API
 
   if (!book) return null;
 
@@ -34,7 +34,7 @@ export const BookModal: React.FC<ModalProps> = ({ book, onClose, details }) => {
           <BookDetailsBlock>
             <BookImg>
               <img
-                src={baseUrl + "img/books/" + book.bookImage}
+                src={BASE_URL + "img/books/" + book.bookImage}
                 alt={book.title}
               />
             </BookImg>

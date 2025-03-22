@@ -21,7 +21,7 @@ export interface BookInfo {
   price: number;
   bookImage: File;
 }
-const book = axios.create({ baseURL: "https://localhost:5001" });
+const book = axios.create({ BASE_URL: "https://localhost:5001" });
 
 async function sendToServer(
   title: string,

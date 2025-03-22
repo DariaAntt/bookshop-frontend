@@ -2,12 +2,12 @@ import { A, MyHeader, HeaderRight, Navigation } from "./style";
 import { useNavigate } from "react-router";
 
 export function Header() {
-  const baseUrl = "https://localhost:5001/";
+  const BASE_URL = "https://bookshop-backend-latest.onrender.com";
   const navigate = useNavigate();
   return (
     <MyHeader>
       <A>
-        <img src={baseUrl + "img/logo.jpg"} />
+        <img src={BASE_URL + "img/logo.jpg"} />
       </A>
       <Navigation>
         <ul>
@@ -66,7 +66,7 @@ export function Header() {
             document.location.reload();
           }}
         >
-          <img src={baseUrl + "img/favorite.png"} alt="Избранное" />
+          <img src={BASE_URL + "img/favorite.png"} alt="Избранное" />
           <p>Избранное</p>
         </a>
         <a
@@ -76,7 +76,7 @@ export function Header() {
             document.location.reload();
           }}
         >
-          <img src={baseUrl + "img/shopping-basket.png"} alt="Корзина" />
+          <img src={BASE_URL + "img/shopping-basket.png"} alt="Корзина" />
           <p>Корзина</p>
         </a>
         <a
@@ -86,7 +86,7 @@ export function Header() {
             document.location.reload();
           }}
         >
-          <img src={baseUrl + "img/sign-in.png"} alt="Вход" />
+          <img src={BASE_URL + "img/sign-in.png"} alt="Вход" />
           <p>Войти</p>
         </a>
       </HeaderRight>

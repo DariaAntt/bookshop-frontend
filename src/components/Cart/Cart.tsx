@@ -15,7 +15,7 @@ import {
 } from "./style";
 
 export function Cart() {
-  const baseUrl = "https://localhost:5001/";
+  const BASE_URL = "https://bookshop-backend-latest.onrender.com";
 
   return (
     <MainContainer>
@@ -24,7 +24,7 @@ export function Cart() {
         <ProductsList>
           <ProductCard>
             <ProductImage>
-              <img src={baseUrl + "img/books/onegin.png"} />
+              <img src={BASE_URL + "img/books/onegin.png"} />
             </ProductImage>
             <ProductDetails>
               Евгений Онегин с комментариями Ю. М. Лотмана. В 2-х книгах
@@ -41,7 +41,7 @@ export function Cart() {
               </Price>
               <DeleteButton>
                 <Delete>
-                  <img src={baseUrl + "img/delete.png"} />
+                  <img src={BASE_URL + "img/delete.png"} />
                 </Delete>
               </DeleteButton>
             </QuantityPrice>
