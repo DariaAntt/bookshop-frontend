@@ -1,3 +1,5 @@
 import axios from "axios";
 
-const client = axios.create({ BASE_URL: "https://localhost:5001" });
+const client = axios.create({
+  baseURL: "https://bookshop-backend-latest.onrender.com",
+});

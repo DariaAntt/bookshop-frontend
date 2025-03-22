@@ -2,7 +2,7 @@ import { A, MyHeader, HeaderRight, Navigation } from "./style";
 import { useNavigate } from "react-router";
 
 export function Header() {
-  const BASE_URL = "https://bookshop-backend-latest.onrender.com";
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const navigate = useNavigate();
   return (
     <MyHeader>

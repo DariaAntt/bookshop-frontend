@@ -11,8 +11,7 @@ import { BookCard } from "../Catalog/Catalog";
 import axios from "axios";
 
 export function Favorite() {
-  const BASE_URL = "https://bookshop-backend-latest.onrender.com";
-
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const [favorites, setFavorites] = useState<BookCard[]>([]);
 
   useEffect(() => {

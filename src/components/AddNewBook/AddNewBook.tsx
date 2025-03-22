@@ -21,7 +21,9 @@ export interface BookInfo {
   price: number;
   bookImage: File;
 }
-const book = axios.create({ BASE_URL: "https://localhost:5001" });
+const book = axios.create({
+  baseURL: "https://bookshop-backend-latest.onrender.com",
+});
 
 async function sendToServer(
   title: string,
@@ -333,20 +335,6 @@ export function AddNewBook() {
 
     setFormError("");
     resetForm();
-
-    // const formData = new FormData();
-    // formData.append("title", title);
-    // formData.append("author", author);
-    // formData.append("description", descriotion);
-    // formData.append("category", category);
-    // formData.append("publishing", publishing);
-    // formData.append("binding", binding);
-    // formData.append("year", year);
-    // formData.append("ageLimit", ageLimit || "");
-    // formData.append("price", price.toString());
-    // formData.append("bookImage", bookImage as File);
-
-    // console.log("Отправляем данные:", Object.fromEntries(formData.entries()));
   };
 
   const resetForm = () => {

@@ -17,7 +17,7 @@ export function Main() {
   const sliderRef = useRef<HTMLDivElement>(null);
   const slideCount = 3; // Количество слайдов
 
-  const BASE_URL = "https://bookshop-backend-latest.onrender.com";
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const [books, setBooks] = useState<BookCard[]>([]);
 
   const showNextSlide = () => {

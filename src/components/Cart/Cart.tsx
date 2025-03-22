@@ -15,8 +15,7 @@ import {
 } from "./style";
 
 export function Cart() {
-  const BASE_URL = "https://bookshop-backend-latest.onrender.com";
-
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   return (
     <MainContainer>
       <p className="page-title">Корзина</p>
