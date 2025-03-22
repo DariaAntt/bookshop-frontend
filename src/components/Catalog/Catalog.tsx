@@ -51,7 +51,7 @@ interface BookFilter {
 }
 
 export function Catalog() {
-  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+  const BASE_URL = "https://bookshop-backend-latest.onrender.com";
   const [books, setBooks] = useState<BookCard[]>([]);
   const [favorites, setFavorites] = useState<Set<number>>(new Set());
   const [loading, setLoading] = useState(false);
