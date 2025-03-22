@@ -39,7 +39,7 @@ export function Main() {
 
   useEffect(() => {
     // первая загрузка книг
-    fetch(BASE_URL + "Catalog")
+    fetch(BASE_URL + "/Catalog")
       .then((response) => response.json())
       .then((data) => {
         setBooks(data.slice(0, 5));
@@ -94,7 +94,7 @@ export function Main() {
             <div style={{ marginBottom: "10px" }}>
               <BookImage>
                 <img
-                  src={BASE_URL + "img/books/" + book.bookImage}
+                  src={BASE_URL + "/img/books/" + book.bookImage}
                   alt={book.title}
                 />
               </BookImage>

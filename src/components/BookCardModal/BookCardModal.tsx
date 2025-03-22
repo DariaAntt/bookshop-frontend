@@ -34,7 +34,7 @@ export const BookModal: React.FC<ModalProps> = ({ book, onClose, details }) => {
           <BookDetailsBlock>
             <BookImg>
               <img
-                src={BASE_URL + "img/books/" + book.bookImage}
+                src={BASE_URL + "/img/books/" + book.bookImage}
                 alt={book.title}
               />
             </BookImg>

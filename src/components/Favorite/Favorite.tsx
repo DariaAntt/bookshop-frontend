@@ -16,7 +16,7 @@ export function Favorite() {
 
   useEffect(() => {
     // Загрузка избранных книг при монтировании компонента
-    fetch(BASE_URL + "favorites/books") // URL вашего API
+    fetch(BASE_URL + "/favorites/books") // URL вашего API
       .then((response) => response.json())
       .then((data) => setFavorites(data))
       .catch((error) =>
@@ -71,10 +71,10 @@ export function Favorite() {
                   <p>КУПИТЬ</p>
                 </Button>
                 <ButtonFavorite>
-                  {/* <img src={BASE_URL + "img/heart1.png"} alt="В избранное" /> */}
+                  {/* <img src={BASE_URL + "/img/heart1.png"} alt="В избранное" /> */}
                   <img
                     id={`favorite-${book.id}`}
-                    src={BASE_URL + "img/heart2.png"}
+                    src={BASE_URL + "/img/heart2.png"}
                     onClick={() => toggleFavorite(book.id)}
                   />
                 </ButtonFavorite>

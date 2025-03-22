@@ -96,7 +96,7 @@ export function Catalog() {
 
   useEffect(() => {
     // первая загрузка книг
-    fetch(BASE_URL + "Catalog")
+    fetch(BASE_URL + "/Catalog")
       .then((response) => response.json())
       .then((data) => {
         setBooks(data);
@@ -119,7 +119,7 @@ export function Catalog() {
 
     // Загрузка авторов
     axios
-      .get<string[]>(BASE_URL + "Catalog/authors")
+      .get<string[]>(BASE_URL + "/Catalog/authors")
       .then((response) => {
         const authors = response.data.map((author) => ({
           value: author,
@@ -133,7 +133,7 @@ export function Catalog() {
 
     // Загрузка издательств
     axios
-      .get<string[]>(BASE_URL + "Catalog/publishings")
+      .get<string[]>(BASE_URL + "/Catalog/publishings")
       .then((response) => {
         const publishers = response.data.map((publisher) => ({
           value: publisher,
@@ -581,7 +581,7 @@ export function Catalog() {
                 <div>
                   <BookImage>
                     <img
-                      src={BASE_URL + "img/books/" + book.bookImage}
+                      src={BASE_URL + "/img/books/" + book.bookImage}
                       alt={book.title}
                       onClick={() => handleBookClick(book)}
                     />
@@ -602,13 +602,13 @@ export function Catalog() {
                     <p>КУПИТЬ</p>
                   </Button>
                   <ButtonFavorite>
-                    {/* <img src={BASE_URL + "img/heart1.png"} alt="В избранное" /> */}
+                    {/* <img src={BASE_URL + "/img/heart1.png"} alt="В избранное" /> */}
                     <img
                       id={`favorite-${book.id}`}
                       src={
                         isFavorite(book.id)
-                          ? BASE_URL + "img/heart2.png"
-                          : BASE_URL + "img/heart1.png"
+                          ? BASE_URL + "/img/heart2.png"
+                          : BASE_URL + "/img/heart1.png"
                       }
                       alt="В избранное"
                       onClick={() => toggleFavorite(book.id)}
