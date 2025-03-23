@@ -56,7 +56,7 @@ export function Favorite() {
               <div>
                 <BookImage>
                   <img
-                    src={BASE_URL + `/img/books/${book.bookImage}`}
+                    src={BASE_URL + "/img/books/" + book.bookImage}
                     alt={book.title}
                   />
                 </BookImage>
