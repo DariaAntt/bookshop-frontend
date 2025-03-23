@@ -107,7 +107,7 @@ export function Catalog() {
     // инициализация состояния избранного
     const fetchFavorites = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}Favorites`);
+        const response = await axios.get(`${BASE_URL}/Favorites`);
         const favoriteIds = response.data.map((fav: any) => fav.bookId);
         setFavorites(new Set(favoriteIds));
       } catch (error) {
