@@ -163,7 +163,7 @@ export function Catalog() {
       );
 
       const response = await axios.get<BookCard[]>(
-        `${BASE_URL}Catalog/paged?${queryString}`
+        `${BASE_URL}/Catalog/paged?${queryString}`
       );
 
       if (response.data.length > 0) {
@@ -183,7 +183,7 @@ export function Catalog() {
   const applyFilters = async () => {
     try {
       const response = await axios.post<BookCard[]>(
-        `${BASE_URL}Catalog/filtered`,
+        `${BASE_URL}/Catalog/filtered`,
         filters
       );
       setBooks(response.data);
@@ -204,7 +204,7 @@ export function Catalog() {
 
   const getBookDetails = async (id: number) => {
     try {
-      const response = await axios.get(`${BASE_URL}Catalog/${id}`);
+      const response = await axios.get(`${BASE_URL}/Catalog/${id}`);
       setBookDetails((prev) => ({
         ...prev,
         [id]: response.data, // Сохраняем данные в объекте по id книги
@@ -223,7 +223,7 @@ export function Catalog() {
 
   const toggleFavorite = async (bookId: number) => {
     try {
-      const url = `${BASE_URL}Favorites/${bookId}`;
+      const url = `${BASE_URL}/Favorites/${bookId}`;
       const method = isFavorite(bookId) ? "DELETE" : "POST";
 
       const response = await axios({
@@ -602,7 +602,6 @@ export function Catalog() {
                     <p>КУПИТЬ</p>
                   </Button>
                   <ButtonFavorite>
-                    {/* <img src={BASE_URL + "/img/heart1.png"} alt="В избранное" /> */}
                     <img
                       id={`favorite-${book.id}`}
                       src={
